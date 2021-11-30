@@ -82,11 +82,16 @@ const app = new Vue({
                 ],
             },
         ],
+        activeIndex: 0,
         
     },
     methods:{
-        getImg: function(item){
-            return "img/avatar"+item+".jpg"
+        getImg: function(avatar){
+            return "img/avatar"+avatar+".jpg"
+        },
+
+        setActiveUsers: function(index){
+            this.activeIndex = index;
         }
     },
 });
