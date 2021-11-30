@@ -11,7 +11,7 @@ body{
 }
 
 /* *** CONTAINER  *** */
-.container, .columnUsers, .myUser, .avatar{
+.container, .columnUsers, .notifications, .myUser, .avatar, .bell, .search{
     display: flex;
 }
 
@@ -45,22 +45,22 @@ body{
 .myUser{
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(209, 209, 209);
+    background-color: rgb(229, 229, 229);
 }
 .avatar, .icons {
     align-items: center;
-    padding: 5px;
+    padding: 10px;
    
 }
-.myUser img {
+.avatar img {
     width: 40px;
     border-radius: 50%;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .icons i{
     margin-right: 15px;
-    color: rgb(177, 177, 177);
+    color: rgb(162, 162, 162);
     font-size: 18px;
 }
 
@@ -71,6 +71,46 @@ body{
     /* REVIEW */
     border: 1px solid greenyellow;
 }
+
+.notifications{
+    background-color: rgb(127, 209, 251);
+    padding: 10px;
+}
+
+.bell{
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px;
+    margin-right: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.bell i{
+    color: rgb(127, 209, 251);
+}
+
+.textBell a {
+    color: rgb(162, 162, 162);
+    font-size: 14px;
+}
+
+.search{
+    justify-content: center;
+}
+.search input{
+    width: 98%;
+    padding: 0 60px;
+}
+
+.contacts{
+    background-color: white;
+    overflow-y: scroll;
+}
+
+
+
+
 
 /* *** COLUMN RIGHT *** */
 .columnChat{

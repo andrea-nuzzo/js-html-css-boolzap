@@ -24,16 +24,28 @@
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
                 </div>
+
                 <div class="notifications">
-                    Sono notifications
+                    <div class="bell">
+                        <i class="fas fa-bell-slash"></i>
+                    </div>
+                    <div class="textBell">
+                        <div class="titleBell">Ricevi notifiche di nuovi messaggi</div>
+                        <a href="#">Attiva notifiche desktop</a>
+                    </div>
                 </div>
                 <div class="search">
-                    Sono search
+                    <input type="text" placeholder="Cerca o inizia una nuova chat">
                 </div>
                 <div class="contacts">
-                    Sono contacts
+                    <div class="avatar" v-for="(user, index) in contacts">
+                        <img :src="getImg(user.avatar)" alt="User Avatar">
+                        <span>{{user.name}}</span>
+                    </div>
                 </div>
             </div>
+
+
             <div class="columnChat"></div>
         </div>
     </div>
