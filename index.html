@@ -70,7 +70,10 @@
 
                 <div class="chatBox">
                     <div v-for="message in contacts[activeIndex].messages">
-                        {{message.status}}
+                        <div :class ="message.status == 'sent' ? 'sent' : 'received'">
+                            <div class="textMessage">{{message.message}}<span class="date">{{message.date}}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
