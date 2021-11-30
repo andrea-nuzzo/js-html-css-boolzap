@@ -11,7 +11,7 @@ body{
 }
 
 /* *** CONTAINER  *** */
-.container, .columnUsers, .notifications, .myUser, .avatar, .bell, .search{
+.container, .columnUsers, .columnChat, .notifications, .myUser, .avatar, .bell, .search{
     display: flex;
 }
 
@@ -116,7 +116,34 @@ body{
 .columnChat{
     width: calc(100% / 3 * 2);
     height: 100%;
+    flex-direction: column;
 
     /* REVIEW */
     border: 1px solid blue;
+}
+
+
+.chatBox{
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    background-image: url(../img/mine.jpg);
+}
+
+.sentMessage{
+    padding: 10px;
+    width: 100%;
+}
+
+.sentMessage i {
+    color: rgb(162, 162, 162);
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.sentMessage input{
+    width: 90%;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
 }
