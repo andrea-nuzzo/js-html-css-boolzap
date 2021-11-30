@@ -1,3 +1,5 @@
+
+/* *** COMMONS *** */
 *{
     margin: 0;
     padding: 0;
@@ -5,9 +7,76 @@
 }
 
 body{
-    background: linear-gradient(to top, rgb(220, 219, 210) 90%,rgb(63, 148, 136) 90% 10%);      
+    background: linear-gradient(to top, rgb(220, 219, 210) 90%,rgb(63, 148, 136) 90% 10%);
+}
+
+/* *** CONTAINER  *** */
+.container, .columnUsers, .myUser, .avatar{
+    display: flex;
 }
 
 .container{
+    width: 80%;
     height: 100vh;
+    margin: 25px auto;
+
+     /* REVIEW */
+    border: 1px solid red;
+}
+
+/* *** COLUMN LEFT *** */
+.columnUsers{
+    width: calc(100% / 3);
+    height: 100%;
+    flex-direction: column;
+
+
+     /* REVIEW */
+    border: 1px solid blue;
+}
+ 
+.myUser, .notifications, .search{
+    width: 100%;
+
+    /* REVIEW */
+    border: 1px solid greenyellow;
+}
+
+.myUser{
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(209, 209, 209);
+}
+.avatar, .icons {
+    align-items: center;
+    padding: 5px;
+   
+}
+.myUser img {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.icons i{
+    margin-right: 15px;
+    color: rgb(177, 177, 177);
+    font-size: 18px;
+}
+
+.contacts{
+    height: 80%;
+    width: 100%;
+
+    /* REVIEW */
+    border: 1px solid greenyellow;
+}
+
+/* *** COLUMN RIGHT *** */
+.columnChat{
+    width: calc(100% / 3 * 2);
+    height: 100%;
+
+    /* REVIEW */
+    border: 1px solid blue;
 }
