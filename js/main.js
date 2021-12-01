@@ -83,15 +83,48 @@ const app = new Vue({
             },
         ],
         activeIndex: 0,
+        inputMessage: '',
         
     },
     methods:{
         getImg: function(avatar){
-            return "img/avatar"+avatar+".jpg"
+            return `img/avatar${avatar}.jpg`
         },
 
         setActiveUsers: function(index){
             this.activeIndex = index;
+        },
+
+        // QWuesta funzione invia un nuovo messaggio 
+        sentNewMessage: function(index){
+            
+            let newMeassageObj= {
+                date:  this.messageDate(),
+                message: this.inputMessage,
+                status: 'sent'
+            }
+
+            if( this.inputMessage != ''){
+                this.contacts[index].messages.push(newMeassageObj)
+                this.inputMessage = '';
+
+                setTimeout(function(){
+                   const automaticMeassageObj= {
+                        date:  app.messageDate(),
+                        message: 'Ok',
+                        status: 'received'
+                    }
+                   app.contacts[index].messages.push(automaticMeassageObj)
+
+                }, 1000);
+            }
+        },
+
+
+        messageDate: function(){
+            let date = new Date();
+            let dateMessage = ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth()+1)).slice(-2) + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' +  date.getSeconds();
+            return dateMessage;
         }
     },
 });

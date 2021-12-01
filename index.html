@@ -10,78 +10,76 @@
     <title>Bollzap</title>
 </head>
 <body>
-    <div id="root">
-        <div class="container">
-            <div class="columnUsers">
-                <div class="user">
-                    <div class="avatar">
-                        <img src="img/avatar_io.jpg" alt="User Avatar">
-                        <span>Nome Utente</span>
-                    </div>
-                    <div class="icons">
-                        <i class="fas fa-circle-notch"></i>
-                        <i class="fas fa-comment-alt"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                    </div>
+    <div id="root" class="container">
+        <div class="columnUsers">
+            <div class="user">
+                <div class="avatar">
+                    <img src="img/avatar_io.jpg" alt="User Avatar">
+                    <span>Nome Utente</span>
                 </div>
-
-                <div class="notifications">
-                    <div class="bell">
-                        <i class="fas fa-bell-slash"></i>
-                    </div>
-                    <div class="textBell">
-                        <div class="titleBell">Ricevi notifiche di nuovi messaggi</div>
-                        <a href="#">Attiva notifiche desktop</a>
-                    </div>
+                <div class="icons">
+                    <i class="fas fa-circle-notch"></i>
+                    <i class="fas fa-comment-alt"></i>
+                    <i class="fas fa-ellipsis-v"></i>
                 </div>
-                <div class="search">
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+            </div>
+    
+            <div class="notifications">
+                <div class="bell">
+                    <i class="fas fa-bell-slash"></i>
                 </div>
-                <div class="contacts">
-                    <div 
-                    class="avatar" id="users" 
-                    v-for="(user, index) in contacts" 
-                    @click="setActiveUsers(index)"
-                    :class="activeIndex == index ? 'activeUser' : '' "
-                    >
-                        <img :src="getImg(user.avatar)" alt="User Avatar">
-                        <span>{{user.name}}</span>
+                <div class="textBell">
+                    <div class="titleBell">Ricevi notifiche di nuovi messaggi</div>
+                    <a href="#">Attiva notifiche desktop</a>
+                </div>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Cerca o inizia una nuova chat">
+            </div>
+            <div class="contacts">
+                <div 
+                class="avatar" id="users" 
+                v-for="(user, index) in contacts" 
+                @click="setActiveUsers(index)"
+                :class="activeIndex == index ? 'activeUser' : '' "
+                >
+                    <img :src="getImg(user.avatar)" alt="User Avatar">
+                    <span>{{user.name}}</span>
+                </div>
+            </div>
+        </div>
+    
+    
+        <div class="columnChat">
+            <div class="user">
+                <div class="avatar">
+                    <img :src="getImg(contacts[activeIndex].avatar)" alt="User Avatar">
+                    <div class="nameAccessUser">
+                        <div>{{contacts[activeIndex].name}}</div>
+                        <div class="lastAccess">Ultimo accesso oggi alle</div>
+                    </div>
+    
+                </div>
+                <div class="icons">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-paperclip"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </div>
+    
+            <div class="chatBox">
+                <div v-for="message in contacts[activeIndex].messages">
+                    <div :class ="message.status == 'sent' ? 'sent' : 'received'">
+                        <div class="textMessage">{{message.message}}<span class="date">{{message.date}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
-            <div class="columnChat">
-                <div class="user">
-                    <div class="avatar">
-                        <img :src="getImg(contacts[activeIndex].avatar)" alt="User Avatar">
-                        <div class="nameAccessUser">
-                            <div>{{contacts[activeIndex].name}}</div>
-                            <div class="lastAccess">Ultimo accesso oggi alle</div>
-                        </div>
-
-                    </div>
-                    <div class="icons">
-                        <i class="fas fa-search"></i>
-                        <i class="fas fa-paperclip"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                    </div>
-                </div>
-
-                <div class="chatBox">
-                    <div v-for="message in contacts[activeIndex].messages">
-                        <div :class ="message.status == 'sent' ? 'sent' : 'received'">
-                            <div class="textMessage">{{message.message}}<span class="date">{{message.date}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sentMessage">
-                    <i class="far fa-smile"></i>
-                    <input type="text" placeholder="Scrivi un messaggio">
-                    <i class="fas fa-microphone"></i>
-                </div>
+    
+            <div class="sentMessage">
+                <i class="far fa-smile"></i>
+                <input type="text" placeholder="Scrivi un messaggio" v-model="inputMessage" @keyup.enter="sentNewMessage(activeIndex)">
+                <i class="fas fa-microphone"></i>
             </div>
         </div>
     </div>
