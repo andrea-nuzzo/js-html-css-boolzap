@@ -82,45 +82,60 @@ const app = new Vue({
                 ],
             },
         ],
+
+        // Variabile per conoscere l'utente selezionato
         activeIndex: 0,
+
+        // Input invio messaggi
         inputMessage: '',
         
     },
     methods:{
+
+        //Questa funzione crea l'immagine dinamicamente
         getImg: function(avatar){
             return `img/avatar${avatar}.jpg`
         },
 
+        // Questa funzione selezione l'untete che clicco attraverso l'index
         setActiveUsers: function(index){
             this.activeIndex = index;
         },
 
-        // QWuesta funzione invia un nuovo messaggio 
+        // Questa funzione invia un nuovo messaggio e una risposta automatica dall'interlocutore 
         sentNewMessage: function(index){
             
+            // Creo un nuovo oggetto che conterrà il messaggio
             let newMeassageObj= {
                 date:  this.messageDate(),
                 message: this.inputMessage,
                 status: 'sent'
             }
 
+            //Se il messaggio non è vuoto
             if( this.inputMessage != ''){
+
+                // Pusho il nuovo messaggio
                 this.contacts[index].messages.push(newMeassageObj)
+                // E svuoto il campo input
                 this.inputMessage = '';
 
+                // Inizializzo una funzione che risponderà automaticamente dopo un secondo
                 setTimeout(function(){
+                    // Creo un oggetto con il messaggio standard
                    const automaticMeassageObj= {
                         date:  app.messageDate(),
                         message: 'Ok',
                         status: 'received'
                     }
+                    // Pusho la risposta
                    app.contacts[index].messages.push(automaticMeassageObj)
 
                 }, 1000);
             }
         },
 
-
+        // Questa funzione crea una data con il formato gg/mm/YYY HH:mm:ss
         messageDate: function(){
             let date = new Date();
             let dateMessage = ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth()+1)).slice(-2) + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' +  date.getSeconds();
