@@ -138,24 +138,34 @@ const app = new Vue({
             }
         },
 
-        searchUser: function(){
-            console.log(this.inputSearch);
-            console
-        },
 
         // Questa funzione crea una data con il formato gg/mm/YYY HH:mm:ss
         messageDate: function(){
             let date = new Date();
             let dateMessage = ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth()+1)).slice(-2) + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' +  date.getSeconds();
             return dateMessage;
+        },
+
+        searchUser: function(){
+            for(let i = 0; i < this.contacts.length; i++){
+
+                if(this.inputSearch == ''){
+                    this.contacts[i].visible = true;
+                }
+
+                if(!this.contacts[i].name.includes(this.inputSearch)){
+                    this.contacts[i].visible = false;
+                }
+            }
         }
     },
 
-    computed: {
-        filteredUsers: function(){
-            return this.contacts.filter((contact)=> {
-                return contact.name.toLowerCase().match(this.inputSearch)
-            });
-        }
-    },
+
+    // computed: {
+    //     filteredUsers: function(){
+    //         return this.contacts.filter((contact)=> {
+    //             return contact.name.toLowerCase().match(this.inputSearch)
+    //         });
+    //     }
+    // },
 });
