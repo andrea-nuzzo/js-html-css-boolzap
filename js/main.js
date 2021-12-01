@@ -88,6 +88,9 @@ const app = new Vue({
 
         // Input invio messaggi
         inputMessage: '',
+
+        // Input ricerca utenti
+        inputSearch: '',
         
     },
     methods:{
@@ -135,11 +138,24 @@ const app = new Vue({
             }
         },
 
+        searchUser: function(){
+            console.log(this.inputSearch);
+            console
+        },
+
         // Questa funzione crea una data con il formato gg/mm/YYY HH:mm:ss
         messageDate: function(){
             let date = new Date();
             let dateMessage = ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth()+1)).slice(-2) + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' +  date.getSeconds();
             return dateMessage;
+        }
+    },
+
+    computed: {
+        filteredUsers: function(){
+            return this.contacts.filter((contact)=> {
+                return contact.name.match(this.inputSearch)
+            });
         }
     },
 });

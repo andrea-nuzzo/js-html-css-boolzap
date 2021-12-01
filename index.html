@@ -34,12 +34,12 @@
                 </div>
             </div>
             <div class="search">
-                <input type="text" placeholder="Cerca o inizia una nuova chat">
+                <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="inputSearch" @keyup.enter="searchUser()">
             </div>
             <div class="contacts">
                 <div 
                 class="avatar" id="users" 
-                v-for="(user, index) in contacts" 
+                v-for="(user, index) in filteredUsers" 
                 @click="setActiveUsers(index)"
                 :class="activeIndex == index ? 'activeUser' : '' "
                 >
