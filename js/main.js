@@ -128,6 +128,7 @@ const app = new Vue({
 
                 // Inizializzo una funzione che risponderà automaticamente dopo un secondo
                 setTimeout(function(){
+
                     // Creo un oggetto con il messaggio standard
                    const automaticMeassageObj= {
                         date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
