@@ -149,8 +149,9 @@ body{
 }
 
 .sentMessage{
+    display: flex;
+    align-items: center;
     padding: 10px;
-    width: 100%;
 }
 
 .sentMessage i {
@@ -182,9 +183,14 @@ body{
 
 .sent > .textMessage{
     background-color: rgb(205, 250, 172);
+}
+
+.sent > .textMessage, .received > .textMessage{
+    max-width: 50%;
     padding: 8px;
     border-radius: 10px;
     margin: 20px 40px;
+    word-wrap: break-word;
 }
 
 .received{
@@ -193,9 +199,6 @@ body{
 
 .received > .textMessage{
     background-color: rgb(255, 255, 255);
-    padding: 8px;
-    border-radius: 10px;
-    margin: 20px 40px;
 }
 
 .date{
