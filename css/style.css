@@ -17,7 +17,7 @@ body{
 }
 
 /* *** CONTAINER  *** */
-.container, .columnUsers, .columnChat, .notifications, .user, .avatar, .bell, .search, .nameAccessUser, .sent ,.received {
+.container, .columnUsers, .columnChat, .notifications, .user, .avatar, .bell, .search, .nameAccessUser, .sent ,.received{
     display: flex;
 }
 
@@ -191,7 +191,7 @@ body{
 
 .sent > .textMessage, .received > .textMessage{
     max-width: 50%;
-    padding: 8px;
+    padding:10px;
     border-radius: 10px;
     margin: 20px 40px;
     word-wrap: break-word;
@@ -205,8 +205,21 @@ body{
     background-color: rgb(255, 255, 255);
 }
 
+
+.messageIsideBox{
+    margin: 0 80px 0px 0;
+    min-width: 100%;
+}
+
 .date{
-    margin-left: 5px;
+    text-align: end;
+    margin-top: 3px;
     font-size: 8px;
     color: #b1b1b1;
+}
+
+.clearfix::after{
+    content: '';
+    display: table;
+    clear: both;
 }
