@@ -1,6 +1,7 @@
 const app = new Vue({
     el:'#root',
-    data:{
+
+    data:{ // <= ***** DATA ***** =>
         contacts: [
             {
                 name: 'Michele',
@@ -91,9 +92,11 @@ const app = new Vue({
 
         // Input ricerca utenti
         inputSearch: '',
-        
-    },
-    methods:{
+
+    }, // <= ***** /DATA ***** =>
+
+    
+    methods:{ // <= ***** METHODS ***** =>
 
         //Questa funzione crea l'immagine dinamicamente
         getImg: function(avatar){
@@ -110,7 +113,7 @@ const app = new Vue({
             
             // Creo un nuovo oggetto che conterrà il messaggio
             let newMeassageObj= {
-                date:  this.messageDate(),
+                date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                 message: this.inputMessage,
                 status: 'sent'
             }
@@ -127,7 +130,7 @@ const app = new Vue({
                 setTimeout(function(){
                     // Creo un oggetto con il messaggio standard
                    const automaticMeassageObj= {
-                        date:  app.messageDate(),
+                        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                         message: 'Ok',
                         status: 'received'
                     }
@@ -138,34 +141,16 @@ const app = new Vue({
             }
         },
 
-
-        // Questa funzione crea una data con il formato gg/mm/YYY HH:mm:ss
-        messageDate: function(){
-            let date = new Date();
-            let dateMessage = ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth()+1)).slice(-2) + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' +  date.getSeconds();
-            return dateMessage;
-        },
-
+        // Questa funzione fa un ricerca tra i contatti
         searchUser: function(){
-            for(let i = 0; i < this.contacts.length; i++){
-
-                if(this.inputSearch == ''){
-                    this.contacts[i].visible = true;
+            this.contacts.forEach(contact => {
+                if (!contact.name.toLowerCase().includes(this.inputSearch.toLowerCase())) {
+                    contact.visible = false;
+                } else{
+                    contact.visible = true;
                 }
+            });
+        },
+    },// <= ***** /METHODS ***** =>
 
-                if(!this.contacts[i].name.includes(this.inputSearch)){
-                    this.contacts[i].visible = false;
-                }
-            }
-        }
-    },
-
-
-    // computed: {
-    //     filteredUsers: function(){
-    //         return this.contacts.filter((contact)=> {
-    //             return contact.name.toLowerCase().match(this.inputSearch)
-    //         });
-    //     }
-    // },
 });
