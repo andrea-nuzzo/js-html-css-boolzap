@@ -25,9 +25,6 @@ body{
     width: 70%;
     height: 90%;
     margin: auto;
-
-     /* REVIEW */
-    border: 1px solid red;
 }
 
 /* *** COLUMN LEFT *** */
@@ -35,23 +32,16 @@ body{
     width: calc(100% / 3);
     height: 100%;
     flex-direction: column;
-
-
-     /* REVIEW */
-    border: 1px solid blue;
 }
  
 .user, .notifications, .search{
     width: 100%;
-
-    /* REVIEW */
-    border: 1px solid greenyellow;
 }
 
 .user{
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(229, 229, 229);
+    background-color: #e9ebeb;
 }
 .avatar, .icons {
     align-items: center;
@@ -74,9 +64,6 @@ body{
 .contacts{
     height: 80%;
     width: 100%;
-
-    /* REVIEW */
-    border: 1px solid greenyellow;
 }
 
 .notifications{
@@ -106,17 +93,24 @@ body{
 }
 
 .search{
+    min-height: 20px;
+    padding: 10px;
     justify-content: center;
+    background-color: #e9ebeb;
+}
+.search i {
+    color: #b1b1b1;
+    padding: 5px;
 }
 .search input{
     width: 98%;
-    padding: 0 60px;
+    border: #b1b1b1;
+    padding-left: 10px;
 }
 
 .contacts{
     background-color: white;
     overflow-y: scroll;
-    margin-top: 10px;
     flex-grow: 1;
 }
 
@@ -138,9 +132,6 @@ body{
     width: calc(100% / 3 * 2);
     height: 100%;
     flex-direction: column;
-
-    /* REVIEW */
-    border: 1px solid blue;
 }
 
 
