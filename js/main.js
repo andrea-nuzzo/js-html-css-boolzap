@@ -127,8 +127,7 @@ const app = new Vue({
                 this.inputMessage = '';
 
                 // Inizializzo una funzione che risponderà automaticamente dopo un secondo
-                setTimeout(function(){
-
+                setTimeout( () => {
                     // Creo un oggetto con il messaggio standard
                    const automaticMeassageObj= {
                         date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
@@ -136,7 +135,7 @@ const app = new Vue({
                         status: 'received'
                     }
                     // Pusho la risposta
-                   app.contacts[index].messages.push(automaticMeassageObj)
+                   this.contacts[index].messages.push(automaticMeassageObj)
 
                 }, 1000);
             }
@@ -145,11 +144,7 @@ const app = new Vue({
         // Questa funzione fa un ricerca tra i contatti
         searchUser: function(){
             this.contacts.forEach(contact => {
-                if (!contact.name.toLowerCase().includes(this.inputSearch.toLowerCase())) {
-                    contact.visible = false;
-                } else{
-                    contact.visible = true;
-                }
+                contact.visible = contact.name.toLowerCase().includes(this.inputSearch.toLowerCase())
             });
         },
     },// <= ***** /METHODS ***** =>
